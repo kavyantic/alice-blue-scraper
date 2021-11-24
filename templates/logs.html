@@ -1,0 +1,68 @@
+{% include 'partials/start.html' %}
+
+<h1 id="log-heading" style="margin:2%;">{{name}}</h1>
+<div class="script-container" style="font-size: 1em;">
+    <table class="table  table-success">
+        <thead >
+          <thead>
+            <tr>
+              <th scope="col">Actions</th>
+              <th>Time</th>
+              <th>price</th>
+            </tr>
+          </thead>
+        </thead>
+        <tbody>
+            {% for e in actions %}
+            <tr>
+              <td>{{e['action']}} </td> 
+              <td>{{e['time']}}</td>
+              <td>{{e['price']}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+      </table>
+      <h2 id="log-heading" style="margin:2%;">Averaging entries</h2>
+      <table class="table  table-success">
+        <thead >
+          <thead>
+            <tr>
+              <th scope="col">Actions</th>
+              <th>Time</th>
+              <th>price</th>
+              <th>Break</th>
+            </tr>
+          </thead>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{averaging_entries['action']}} </td> 
+            <td>{{averaging_entries['time']}}</td>
+            <td>{{averaging_entries['price']}}</td>
+            <td>{{averaging_entries['break']}}%</td>
+          </tr>
+            {% for e in averaging_entries['entries'] %}
+            <tr>
+              <td>{{loop.index}}</td>
+              <td>-</td>
+              <td>{{e}}</td> 
+              <td>{{averaging_entries['break']}}%</td>
+  
+            </tr>
+            {% endfor %}
+
+        </tbody>
+      </table>
+
+
+</div>
+
+    
+</body> 
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,54 @@
+
+.time-setter-button {
+  display:inline-block;
+  margin:2%;
+}
+body{
+  font-family: sans-serif;
+  font-size:1.5em;
+}
+select {
+  height: 10%;
+}
+
+#log-heading {
+  margin:5%;
+}
+
+
+.script-container {
+  margin:2%;
+  font-size: 80%
+
+}
+
+.scrip-action {
+  margin:2%;
+  display: inline-block;
+}
+
+.ant-web-form-button{
+  margin:2%;
+}
+
+#exampleModalCenter > div {
+  text-align: center;
+  width:40%;
+  
+}
+
+.bought {
+  background-color: rgb(21, 253, 0);
+}
+
+.sold {
+  background-color: rgb(251, 255, 40);
+}
+
+option[default] {
+  display: none;
+}
+
+input{
+  width: 20%;
+}

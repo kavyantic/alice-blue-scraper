@@ -1,0 +1,46 @@
+{% include 'partials/start.html' %}
+<!-- <select class="form-select form-select-sm mb-3 theme-selector" aria-label=".form-select-sm example">
+  <option >Black</option>
+  <option selected>White</option>
+</select> -->
+<h3 id="log-heading" style="margin:2%;color: rgb(167, 56, 56);">Alice Blue</h3>
+
+<!-- <div class="time-setter-button input-group mb-3">
+  <div class="input-group-prepend">
+    <button class="btn btn-outline-secondary" type="button">Button</button>
+  </div>
+  <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+</div> -->
+
+<div class="script-container">
+    <table class="table  table-success">
+        <thead >
+          <thead>
+            <tr>
+              <th scope="col">NAME</th>
+              <th>current</th>
+              <th>OpenHighLow</th>
+              <th>[tbq/tsq*100]</th>
+              <th>P/L</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+        </thead>
+        <tbody>
+            {% for e in scrips %}
+            <tr>
+              <td>{{e.Name}} </td> 
+              <td>{{e.LastTradedPrice}}</td>
+              <td>____</td>
+              <td>____</td>
+              <td>____</td>
+              <!-- <td><button class="remove-scrip" value="{{e.ScripCode}}">X</button></td> -->
+              <td>{% include 'action.html' %}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+      </table>
+</div>
+{% include 'partials/end.html' %}
+

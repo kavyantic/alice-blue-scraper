@@ -1,0 +1,49 @@
+    <!-- Button trigger modal -->
+    <button type="button" class="ant-web-form-button" data-toggle="modal" data-target=".mody">
+        Actions
+    </button>
+              <!-- Modal -->
+              <div class="modal fade mody"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" >Actions</h5>
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <label>OnTime Purchase action </label>
+                        <form class="scrip-action" action="/addaction" method="post">
+                            <input type="hidden" name="scripcode" value="makereqest" class="hidden-scripcode"/>
+                            <input type="time" name="time" placeholder="Time" required/>
+                            <input name="breakprice" placeholder="BreakPrice" required/>
+                            <input name="qty" placeholder="qty" required/>
+                            <select name="action">
+                                <option selected>B</option>
+                                <option>S</option>
+                            </select>
+                            <input type="percent" name="averaging" placeholder="averaging" required/>
+                            <button action="submit">set</button>
+
+                        </form >
+                        <form class="scrip-action logs" action="/logs" method="post" target="_blank" >
+                            <input type="hidden" name="scripcode" value="makereqest" class="hidden-scripcode"/>
+                            <button>Logs</button>
+                        </form>
+                        <form  class="scrip-action edit" action="/editaction" method="post" target="_blank" >
+                            <input type="hidden" name="scripcode" value="makereqest" class="hidden-scripcode"/>
+                            <button>Edit</button>
+                        </form>
+                        <form  class="scrip-action edit" action="/editaveraging" method="post" target="_blank" >
+                            <input type="hidden" name="scripcode" value="makereqest" class="hidden-scripcode"/>
+                            <button>Averaging</button>
+                        </form>
+                      
+                        
+
+                </div>
+                </div>
+            </div>
+</div>
