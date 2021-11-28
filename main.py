@@ -147,9 +147,8 @@ def scrapeData(idx):
         tbq     = driver.find_element(By.XPATH,f'//*[@id="root"]/div/div[3]/div/div[1]/div/div[2]/div/div[1]/div[2]/div/div[{idx}]/div/ul/div/ul/li/div/div[2]/table/tbody[3]/tr/td/h6').text
         tsq     = driver.find_element(By.XPATH,f'//*[@id="root"]/div/div[3]/div/div[1]/div/div[2]/div/div[1]/div[2]/div/div[{idx}]/div/ul/div/ul/li/div/div[2]/table/tbody[4]/tr/td/h6').text
         return name,current,_open,high,low,close,tbq,tsq
-    except exce.NoSuchElementException:
-        driver.refresh()
-        openAllTabs()
+    except :
+        return ["0" for i in range(8)]
     
 def buy(idx,qty):
     try:
