@@ -186,6 +186,8 @@ def timeFormat(time):
 to_take_entry = {}
 entered = {}
 averaging_entries = {}
+actioning = True
+average_actioning = True
 
 
 # %%
@@ -262,12 +264,15 @@ def sendata():
     now = datetime.now()
     current_hour = str(now.hour)+":"+str(now.minute)
     all_scripts = []
+    global actioning
+    global average_actioning
     for idx,symbol in enumerate(all_symbol_elements,1):
         name,current ,_open,high,low ,close,tbq ,tsq   = scrapeData(idx)            
         try:
             actions = to_take_entry[name]
             for action in actions:
-                if(action['time'] == current_hour):
+                if(action['time'] == current_hour and actioning):
+                    actioning = False
                     if(action['action']=="B"):
                         if(getInteger(current)<=int(action['breakprice'])):
                             buy(idx,action['qty'])
@@ -288,6 +293,7 @@ def sendata():
                                 entered[name].append({"action":"sold","time":now,"price":current})
                             except KeyError:
                                 entered[name] = [{"action":"sold","time":now,"price":current}]
+                    actioning =True
         except KeyError:
             pass
         
@@ -299,7 +305,8 @@ def sendata():
         stock = {"name":name,"current":current,"open" : _open,"high":high,"low":low,"close":close,"tbq":tbq,"tsq":tsq,"open_comparision":open_comparision,"tbq_tsq":tbq_tsq}
         
             
-        if(name in averaging_entries):
+        if(name in averaging_entries and average_actioning):
+            average_actioning = False
             averaging_action = averaging_entries[name]
             if(averaging_action['live']): 
                 action = averaging_action["action"]
@@ -320,6 +327,8 @@ def sendata():
                        print(current_int,"-",float(price+price*(break_)/100))
                        buy(idx,quantity)
                        averaging_entries[name]["entries"].append(current_int)
+            average_actioning = True
+            
 
         if(name in entered):
             stock[entered[name][-1]["action"]]=True
